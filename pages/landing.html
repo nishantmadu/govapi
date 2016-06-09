@@ -21,7 +21,11 @@
     <span>Year</span>
     <input type="text" id="Year" ng-model="vh.year"/>
   </label>
-  <span><a class="btn btn-primary" ng-click="hm.getdetails()">Get Info</a></span>
+  <label for="contact">
+    <span>Sex</span>
+    <input type="text" id="Sex" ng-model="vh.sex"/>
+  </label>
+  <span><a class="btn btn-primary" ng-click="vh.getdetails()">Get Info</a></span>
 </form>
 
   <div class="container-fluid header text-center">
@@ -35,13 +39,17 @@
                 <tr>
                   <th><center>Population</center></th>
                   <th><center>Age</center></th>
-                  <!-- <th><center>No.of Games</center></th> -->
+                  <th><center>Sex</center></th>
+                  <th><center>Year</center></th>
+
                 </tr>
               </thead>
               <tbody>
-                    <tr ng-repeat = "n in vh.governmentResponse">
+                    <tr ng-repeat = "n in vh.response">
                   <td><center><a href="#" >{{n[3]}}</a></center></td>
                   <td><center><a href="#" >{{n[2]}}</a></center></td>
+                  <td><center><a href="#" >{{n[4]}}</a></center></td>
+                  <td><center><a href="#" >{{n[5]}}</a></center></td>
                 </tr>
               </tbody>
             </table>
