@@ -28,18 +28,58 @@ angularApp.config(function ($routeProvider) {
 //
 //
 // angularApp.config(['$httpProvider', function ($httpProvider) {
-//    $httpProvider.defaults.headers.common['X-Auth-Token'] = 'af86c338f9014ef3bae9c0d3e246961a';
+//    $httpProvider.defaults.headers.common['X-Auth-Token'] = 'acf10978ecd78c52fd2a2a9c20b3ffca279a472f';
 // }]);
 //
 //
-angularApp.controller("HomeController",['$resource','$filter', '$http','$q',function($resource,$filter,$http,$q){
-  var vm=this;
-    var governmentResource = $resource('http://api.census.gov/data/timeseries/idb/1year?get=AREA_KM2,NAME,AGE,POP&FIPS=IN&time=2012&SEX=0');
-    vm.governmentResponse = governmentResource.query();
-    console.log(vm.governmentResponse);
-    // console.log(vm.response);
+// angularApp.controller("HomeController",['$resource','$filter', '$http','$q',function($resource,$filter,$http,$q){
+//   var vm=this;
+//   vm.getCensus = function(){
+//     var governmentResource = $resource('http://api.census.gov/data/timeseries/idb/1year?get=AREA_KM2,NAME,AGE,POP&FIPS=IN&time=2012&SEX=0');
+//     vm.government = governmentResource.query({
+//       key:'acf10978ecd78c52fd2a2a9c20b3ffca279a472f'
+//     });
+//     vm.government.$promise.then(function(data){
+//       vm.governmentResponse = data;
+//       console.log(vm.governmentResponse);
+//     }, function(error){
+//       console.log(error);
+//     });
+//     // console.log(vm.response);
+//   }
+// }]);
+
+
+angularApp.controller("HomeController",['$resource','$routeParams','landingservice',function($resource,$routeParams,landingservice){
+ var vm = this;
+ vm.details = landingservice.getdetails();
+ console.log(vm.details);
 }]);
+
+
+
+angularApp.service('landingservice',function($resource,$routeParams){
+ var vm = this;
+ vm.country = "";
+ vm.year = "";
+ vm.getdetails = function (){
+   var details =$resource('http://api.census.gov/data/timeseries/idb/1year?get=AREA_KM2,NAME,AGE,POP',
+  {FIPS:vm.country,time:vm.year,key:'acf10978ecd78c52fd2a2a9c20b3ffca279a472f'});
+   vm.response = details.query();
+   return vm.response;
+   console.log(vm.response);
+ }
+});
+
+
+
 //
+// angularApp.controller("HomeController",function($resource){
+//   var vm=this;
+//   vm.getCensus = function(){
+//     var governmentResource = $resource('http://api.census.gov/data/timeseries/idb/1year?get=AREA_KM2,NAME,AGE,POP&FIPS=IN&time=2012&SEX=0');
+//     vm.governmentResponse = governmentResource.query();
+//   };
 //
 // angularApp.controller("DetailsController",['$filter','$routeParams','$location','$rootScope','FootballService','playerService',function($filter,$routeParams,$location,$rootScope,FootballService,playerService){
 //     var vm=this;

@@ -9,11 +9,23 @@
   <div class="col-md-6 col-md-offset-3">
     <h4><center>Country</center></h4>
     <div class="form-group">
-      <input type="text" class="form-control" ng-model=""/>
+      <!-- <input type="text" class="form-control" ng-model=""/> -->
   </div>
 
+  <form>
+  <label for="company">
+    <span>Country Name</span>
+    <input type="text" id="Country" ng-model="vh.country"/>
+  </label>
+  <label for="contact">
+    <span>Year</span>
+    <input type="text" id="Year" ng-model="vh.year"/>
+  </label>
+  <span><a class="btn btn-primary" ng-click="hm.getdetails()">Get Info</a></span>
+</form>
+
   <div class="container-fluid header text-center">
-    <h3>Population Data</h3>
+    <!-- <h3>Population Data</h3> -->
   </div>
   <div class ="row">
     <div class="col-md-6 col-md-offset-3" id="result">
@@ -28,9 +40,8 @@
               </thead>
               <tbody>
                     <tr ng-repeat = "n in vh.governmentResponse">
-                  <td><center><a href="#" >{{n.NAME}}</a></center></td>
-                  <!-- <td><center><a href="#" >{{n.numberOfTeams}}</a></center></td> -->
-                  <!-- <td><center><a href="#" >{{n.numberOfGames}}</a></center></td> -->
+                  <td><center><a href="#" >{{n[3]}}</a></center></td>
+                  <td><center><a href="#" >{{n[2]}}</a></center></td>
                 </tr>
               </tbody>
             </table>
