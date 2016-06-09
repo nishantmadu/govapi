@@ -8,6 +8,12 @@ angularApp.config(function ($routeProvider) {
     controllerAs: 'vh'
   })
 
+  .when ('/censuspercent', {
+    templateUrl: 'pages/percent.html',
+    controller: 'PercentController',
+    controllerAs: 'pc'
+  })
+
 });
 
 
