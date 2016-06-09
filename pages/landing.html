@@ -1,22 +1,45 @@
 <nav class="nav navbar-inverse">
  <div class="container">
-   <center><h2>Government App</h2> <center>
+   <center><h2>Census App</h2> <center>
  </div>
 </nav>
 
 
 <div class="row" ng-controller="HomeController as hm">
   <div class="col-md-6 col-md-offset-3">
-    <h4><center>Country</center></h4>
     <div class="form-group">
-      <!-- <input type="text" class="form-control" ng-model=""/> -->
   </div>
 
-  <form>
+  <form name="myForm" id="result">
+   <select class="form-control form-control-lg" name="singleSelect" ng-model="vh.country">
+     <option value="IN">India</option>
+     <option value="US">United States</option>
+     <option value="UK">United Kingdom</option>
+     <option value="CA">Canada</option>
+   </select></br>
+
+   <select class="form-control form-control-lg" name="singleSelect" ng-model="vh.year">
+     <option value="2010">2010</option>
+     <option value="2011">2011</option>
+     <option value="2012">2012</option>
+     <option value="2013">2013</option>
+     <option value="2014">2014</option>
+   </select></br>
+
+   <select class="form-control form-control-lg" name="singleSelect" ng-model="vh.sex">
+     <option value="0">All</option>
+     <option value="1">Male</option>
+     <option value="2">Female</option>
+   </select>
+   <center><button class="btn btn-lg btn-success"ng-click="vh.getdetails()">Get Info</button></center>
+</form>
+
+  <!-- <form>
   <label for="company">
     <span>Country Name</span>
     <input type="text" id="Country" ng-model="vh.country"/>
   </label>
+
   <label for="contact">
     <span>Year</span>
     <input type="text" id="Year" ng-model="vh.year"/>
@@ -26,7 +49,7 @@
     <input type="text" id="Sex" ng-model="vh.sex"/>
   </label>
   <span><a class="btn btn-primary" ng-click="vh.getdetails()">Get Info</a></span>
-</form>
+</form> -->
 
   <div class="container-fluid header text-center">
     <!-- <h3>Population Data</h3> -->
@@ -49,7 +72,7 @@
                   <td><center><a href="#" >{{n[3]}}</a></center></td>
                   <td><center><a href="#" >{{n[2]}}</a></center></td>
                   <td><center><a href="#" >{{n[4]}}</a></center></td>
-                  <td><center><a href="#" >{{n[5]}}</a></center></td>
+                  <td><center><a href="#" >{{n[7]}}</a></center></td>
                 </tr>
               </tbody>
             </table>
